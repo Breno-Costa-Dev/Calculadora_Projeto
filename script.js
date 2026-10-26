@@ -1,16 +1,41 @@
-const number1 = document.querySelector("#tabuada");
-const mult2 = document.querySelector("#multiplicar");
-const calcular = document.querySelector("#calcular");
+//Seleção de elementos
+const multiplicationform = document.querySelector("#multiplication-form");
+const numberInput = document.querySelector("#number");
+const multiplicationInput = document.querySelector("#multiplicator");
+const multiplicationTitle = document.querySelector("#multiplication-title-span");
+const multiplicationTable = document.querySelector("#multiplication-operations");
 
-const resultado = document.querySelector("#res");
+//Funções
+const createTable = (number,multiplicatorNumber) => {
+    multiplicationTable.innerHTML = "";
 
-function tabuada() {
-    resultado.textContent = " ";
+    for(let i = 1; i <= multiplicatorNumber; i++){
+        const result = number * i;
+        
+        const template = `<div class="row"> 
+                            <div class="operations">${number} X ${i} = </div> <div class="result">${result}</div> 
+                            </div>`;
 
-    for(let i = 0; i <= Number(mult2.value); i++){
-        resultado.textContent += `
-        ${Number(number1.value)} X ${i} = ${Number(number1.value) * i}`;
+        const parser = new DOMParser();
+
+        const htmlTamplate = parser.parseFromString(template,"text/html");
+
+        const row = htmlTamplate.querySelector(".row");
+
+        multiplicationTable.appendChild(row);
     }
+    multiplicationTitle.innerText = number;
 }
 
-calcular.addEventListener("click",tabuada);
+//Eventos
+multiplicationform.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const multiplicationNumber = +numberInput.value;
+    const multiplicatorNumber = +multiplicationInput.value;
+
+    if(!multiplicationNumber || !multiplicatorNumber) return;
+
+    createTable(multiplicationNumber,multiplicatorNumber);
+});

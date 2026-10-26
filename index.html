@@ -8,23 +8,23 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <h1>Digite o número e confirme para gerar uma tabuada</h1>
-    <div class="geral">
-            <div class="conteiner">
-                <label for="tabuada">Tabuada do:</label>
-                 <label for="multiplicar">Multiplicar até:</label>
-            </div>
-            <div class="conteiner">
-                <input type="number" name="tabuada" id="tabuada">
-                <input type="number" name="multiplicar" id="multiplicar">
-            </div>
-        <input type="button" value="Calcular" id="calcular">
-    </div>
-    <h1>Tabuada do número:</h1>
-    <div class="geral2">
-       
-        <p>Informe um numero para calcular uma tabuada...</p>
-        <p id="res"></p>
+    <h2>Digite um número e confirme para gerar uma tabuada</h2>
+    <form id="multiplication-form">
+        <div class="form-control">
+            <label for="number">Tabuada do:</label>
+            <input type="number" name="number" id="number" placeholder="3"/>
+        </div>
+        <div class="form-control">
+            <label for="multiplicator">Multiplicar até:</label>
+            <input type="number" name="multiplicator" id="multiplicator" value="10">
+        </div>
+        <input type="submit" value="Calcular">
+    </form>
+    <div class="multiplication-table">
+        <h3 id="multiplication-title">Tabuada do número: <span id="multiplication-title-span"></span></h3>
+        <div id="multiplication-operations">
+            <p>Informe um número para calcular uma tabuada....</p>
+        </div>
     </div>
 </body>
 </html>
